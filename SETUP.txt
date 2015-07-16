@@ -1,4 +1,5 @@
-// initial setup
+// initial setup  
+// FAQ: http://pages.github.com
 
 echo "# designpro.github.io" >> README.md
 git init
