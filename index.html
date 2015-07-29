@@ -1,29 +1,29 @@
 <html><head>
-		<title> - beta</title>
-		<style>
-			body {margin:0; padding:0; background:black; overflow: hidden; font-family:arial; font-size:11px;}
-			canvas {}
-			#out {font-family:arial; font-size:12px; color:white; position:absolute; top:0; left:0; background-color:#444}
-			#back {position:fixed; right:20px; bottom:15px; color:#a00; font-weight:bold;}
+	<title> - beta</title>
+	<style>
+	body {margin:0; padding:0; background:black; overflow: hidden; font-family:arial; font-size:11px;}
+	canvas {}
+		#out {font-family:arial; font-size:12px; color:white; position:absolute; top:0; left:0; background-color:#444}
+		#back {position:fixed; right:20px; bottom:15px; color:#a00; font-weight:bold;}
 		</style>
 		<script type="text/javascript">
 
-			function html(id,txt) {
-				var o = document.getElementById(id);
-				o.innerHTML = txt;
-			}
+		function html(id,txt) {
+			var o = document.getElementById(id);
+			o.innerHTML = txt;
+		}
 
-			if ( !window.requestAnimationFrame ) {
-				window.requestAnimationFrame = ( function() {
-					return window.webkitRequestAnimationFrame ||
-					window.mozRequestAnimationFrame ||
-					window.oRequestAnimationFrame ||
-					window.msRequestAnimationFrame ||
-					function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
-						window.setTimeout( callback, 1000 / 60 );
-					};
-				} )();
-			}
+		if ( !window.requestAnimationFrame ) {
+			window.requestAnimationFrame = ( function() {
+				return window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+					window.setTimeout( callback, 1000 / 60 );
+				};
+			} )();
+		}
 
 		</script>
 	</head>
@@ -33,150 +33,150 @@
 		<a href="http://github.com/designpro" id="back">Asher's GitHub</a>
 
 		<script type="text/javascript">
-			console.log("...1");
-			(function(){
+		console.log("...1");
+		(function(){
 
 
 
-				function onWindowResize(){
-					windowX = window.innerWidth;
-					windowY = window.innerHeight;
-					windowHalfX = windowX / 2;
-					windowHalfY = windowY / 2;
-					aspect = windowX / windowY;
-					canvas.width = windowX;
-					canvas.height = windowY;
+			function onWindowResize(){
+				windowX = window.innerWidth;
+				windowY = window.innerHeight;
+				windowHalfX = windowX / 2;
+				windowHalfY = windowY / 2;
+				aspect = windowX / windowY;
+				canvas.width = windowX;
+				canvas.height = windowY;
+			}
+			function onDocumentMouseMove( event ) {
+				mouseX = (event.clientX - windowHalfX)*10;
+				mouseY = (event.clientY - windowHalfY)*10;
+			}
+
+			function onDocumentTouchStart( event ) {
+				if ( event.touches.length == 1 ) {
+					event.preventDefault();
+					mouseX = (event.touches[ 0 ].pageX - windowHalfX)*10;
+					mouseY = (event.touches[ 0 ].pageY - windowHalfY)*10;
 				}
-				function onDocumentMouseMove( event ) {
-					mouseX = (event.clientX - windowHalfX)*10;
-					mouseY = (event.clientY - windowHalfY)*10;
-				}
+			}
 
-				function onDocumentTouchStart( event ) {
-					if ( event.touches.length == 1 ) {
-						event.preventDefault();
-						mouseX = (event.touches[ 0 ].pageX - windowHalfX)*10;
-						mouseY = (event.touches[ 0 ].pageY - windowHalfY)*10;
+			function onDocumentTouchMove( event ) {
+				if ( event.touches.length == 1 ) {
+					event.preventDefault();
+					mouseX = (event.touches[ 0 ].pageX - windowHalfX)*10;
+					mouseY = (event.touches[ 0 ].pageY - windowHalfY)*10;
+				}
+			}
+
+
+			console.log("...2");
+			var canvas;
+			var ctx;
+			var dtm=otm=tm=ntm=0;
+			var dots = [];
+			var aspect,windowX,windowY,windowHalfX,windowHalfY;
+			var mouseX=mouseY=0;
+			var OmouseX=OmouseY=0;
+			var speed = 0;
+			var objects = 100;
+
+			function init() {
+				//window.scrollTo(0,0.9);
+				tm = (new Date).getTime();
+				canvas = document.getElementById("canvas");
+				ctx=canvas.getContext("2d");
+				window.addEventListener( 'resize', onWindowResize, false );
+				onWindowResize();
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+				if (window.DeviceMotionEvent != undefined) {
+					window.ondevicemotion = function(event) {
+						OmouseX = mouseX;
+						OmouseY = mouseY;
+						var dx = event.accelerationIncludingGravity.x*1000;
+						var dy = -event.accelerationIncludingGravity.y*1000;
+						mouseX = (OmouseX*3+dx)/4;
+						mouseY = (OmouseY*3+dy)/4;
 					}
 				}
 
-				function onDocumentTouchMove( event ) {
-					if ( event.touches.length == 1 ) {
-						event.preventDefault();
-						mouseX = (event.touches[ 0 ].pageX - windowHalfX)*10;
-						mouseY = (event.touches[ 0 ].pageY - windowHalfY)*10;
-					}
+
+				for ( var i=0; i<objects; i++ ) {
+					dots[i] = {x:Math.random()*10000-5000 , y:Math.random()*10000-5000 , z: i*(256/objects) };
 				}
+				animate();
+			}
 
+			function animate() {
+				requestAnimationFrame( animate );
 
-				console.log("...2");
-				var canvas;
-				var ctx;
-				var dtm=otm=tm=ntm=0;
-				var dots = [];
-				var aspect,windowX,windowY,windowHalfX,windowHalfY;
-				var mouseX=mouseY=0;
-				var OmouseX=OmouseY=0;
-				var speed = 0;
-				var objects = 100;
+				var ntm = (new Date).getTime();
+				var otm = dtm;
+				dtm = ntm - tm;
+				tm = ntm;
+				render();
 
-				function init() {
-					//window.scrollTo(0,0.9);
-					tm = (new Date).getTime();
-					canvas = document.getElementById("canvas");
-					ctx=canvas.getContext("2d");
-					window.addEventListener( 'resize', onWindowResize, false );
-					onWindowResize();
+				//console.log("render");
+				html("out", "fps:"+parseInt(1000/((dtm+otm)/2),10) )
 
-					document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-					document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-					document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-					if (window.DeviceMotionEvent != undefined) {
-						window.ondevicemotion = function(event) {
-							OmouseX = mouseX;
-							OmouseY = mouseY;
-							var dx = event.accelerationIncludingGravity.x*1000;
-							var dy = -event.accelerationIncludingGravity.y*1000;
-							mouseX = (OmouseX*3+dx)/4;
-							mouseY = (OmouseY*3+dy)/4;
+			}
+
+			function draw_dot(x,y,size){
+				ctx.beginPath();
+				ctx.arc( windowHalfX+x, windowHalfY+y, size, 0, Math.PI*2, true);
+				ctx.closePath();
+				ctx.fill();
+			}
+
+			function render() {
+
+				//ctx.fillStyle="#000000";
+				ctx.fillStyle="rgba(255,255,255,"+(1.1-Math.abs(speed)/3)+")";
+				ctx.fillRect(0,0,windowX,windowY);
+
+				function compare(a,b) {
+					if (a.z < b.z)
+					return 1;
+					if (a.z > b.z)
+					return -1;
+					return 0;
+				}
+				dots.sort(compare);
+
+				//ctx.fillStyle="#000000";
+				for ( var i=0; i<objects; i++ ) {
+					var value = (dots[i].z)|0;
+					ctx.fillStyle = "rgb("+value+","+value+","+value+")";
+					draw_dot( (dots[i].x - mouseX) / dots[i].z , (dots[i].y - mouseY) / dots[i].z , 500 / dots[i].z );
+					dots[i].z -= speed;
+
+					//console.log( Math.abs(mouseX - dots[i].x) , Math.abs(mouseY - dots[i].y) , Math.abs(0 - dots[i].z) );
+
+					if ( Math.abs(mouseX - dots[i].x) < 500 && Math.abs(mouseY - dots[i].y) < 500 && Math.abs(0 - dots[i].z) < 3 ) {
+						if ( speed > 0 ) {
+							//var damage = speed;
+							//health -= speed;
 						}
+						speed = -0.1;
 					}
 
-
-					for ( var i=0; i<objects; i++ ) {
-						dots[i] = {x:Math.random()*10000-5000 , y:Math.random()*10000-5000 , z: i*(256/objects) };
+					if ( dots[i].z < 0 ) {
+						dots[i].x = Math.random()*10000-5000;
+						dots[i].y = Math.random()*10000-5000;
+						dots[i].z += 256;
 					}
-					animate();
 				}
 
-				function animate() {
-					requestAnimationFrame( animate );
+				speed = speed + (dtm/10000);
+				if (speed > 2) speed = 2;
 
-					var ntm = (new Date).getTime();
-					var otm = dtm;
-					dtm = ntm - tm;
-					tm = ntm;
-					render();
+			}
 
-					//console.log("render");
-					html("out", "fps:"+parseInt(1000/((dtm+otm)/2),10) )
-
-				}
-
-				function draw_dot(x,y,size){
-					ctx.beginPath();
-					ctx.arc( windowHalfX+x, windowHalfY+y, size, 0, Math.PI*2, true);
-					ctx.closePath();
-					ctx.fill();
-				}
-
-				function render() {
-
-					//ctx.fillStyle="#000000";
-					ctx.fillStyle="rgba(255,255,255,"+(1.1-Math.abs(speed)/3)+")";
-					ctx.fillRect(0,0,windowX,windowY);
-
-					function compare(a,b) {
-					  if (a.z < b.z)
-						 return 1;
-					  if (a.z > b.z)
-						return -1;
-					  return 0;
-					}
-					dots.sort(compare);
-
-					//ctx.fillStyle="#000000";
-					for ( var i=0; i<objects; i++ ) {
-						var value = (dots[i].z)|0;
-						ctx.fillStyle = "rgb("+value+","+value+","+value+")";
-						draw_dot( (dots[i].x - mouseX) / dots[i].z , (dots[i].y - mouseY) / dots[i].z , 500 / dots[i].z );
-						dots[i].z -= speed;
-
-						//console.log( Math.abs(mouseX - dots[i].x) , Math.abs(mouseY - dots[i].y) , Math.abs(0 - dots[i].z) );
-
-						if ( Math.abs(mouseX - dots[i].x) < 500 && Math.abs(mouseY - dots[i].y) < 500 && Math.abs(0 - dots[i].z) < 3 ) {
-							if ( speed > 0 ) {
-								//var damage = speed;
-								//health -= speed;
-							}
-							speed = -0.1;
-						}
-
-						if ( dots[i].z < 0 ) {
-							dots[i].x = Math.random()*10000-5000;
-							dots[i].y = Math.random()*10000-5000;
-							dots[i].z += 256;
-						}
-					}
-
-					speed = speed + (dtm/10000);
-					if (speed > 2) speed = 2;
-
-				}
-
-				init();
-			})();
+			init();
+		})();
 		</script>
 
 
-</body></html>
+	</body></html>
