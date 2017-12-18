@@ -1,5 +1,6 @@
 <html>
 <head>
+<iframe src="http://valua.org" frameborder="0" allowfullscreen></iframe>
 <script type="text/javascript" charset="utf-8" src="map.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
