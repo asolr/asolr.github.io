@@ -33,10 +33,19 @@ var beaches = [
   ['Maroubra Beach', -33.950198, 151.259302, 1]
 ];
 
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+}
 
-// initalize other markers
+// MAIN FUNCTION!
 function initMarkers() {
   setMarkers(map);
+  google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng);
+  });
 }
 
 function setMarkers(map) {
