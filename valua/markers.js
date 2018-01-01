@@ -1,12 +1,34 @@
 
+
 // CUSTOM MARKERS EXAMPLE!
 // The following example creates complex markers to indicate beaches near
 // Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
 // to the base of the flagpole.
 
-function initMarkers() {
-  setMarkers(map);
-}
+var chicago = {lat: 41.85, lng: -87.65};
+var uluru = {lat: -25.363, lng: 131.044};
+
+var contentString = '<div id="content">'+
+'<div id="siteNotice">'+
+'</div>'+
+'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+'<div id="bodyContent">'+
+'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+'sandstone rock formation in the southern part of the '+
+'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+'south west of the nearest large town, Alice Springs; 450&#160;km '+
+'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+'Aboriginal people of the area. It has many springs, waterholes, '+
+'rock caves and ancient paintings. Uluru is listed as a World '+
+'Heritage Site.</p>'+
+'<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+'(last visited June 22, 2009).</p>'+
+'</div>'+
+'</div>';
+
 
 // Data for the markers consisting of a name, a LatLng and a zIndex for the
 // order in which these markers should display on top of each other.
@@ -18,7 +40,28 @@ var beaches = [
   ['Maroubra Beach', -33.950198, 151.259302, 1]
 ];
 
+
+// initalize other markers
+function initMarkers() {
+  setMarkers(map);
+}
+
 function setMarkers(map) {
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  var marker = new google.maps.Marker({
+    position: chicago,
+    map: map,
+    title: 'Uluru (Ayers Rock)'
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+
   // Adds markers to the map.
 
   // Marker sizes are expressed as a Size of X,Y where the origin of the image
