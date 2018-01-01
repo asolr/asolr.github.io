@@ -47,7 +47,6 @@ function initMarkers() {
 }
 
 function setMarkers(map) {
-
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
@@ -87,7 +86,7 @@ function setMarkers(map) {
   };
   for (var i = 0; i < beaches.length; i++) {
     var beach = beaches[i];
-    var marker = new google.maps.Marker({
+    var flags = new google.maps.Marker({
       position: {lat: beach[1], lng: beach[2]},
       map: map,
       icon: image,
@@ -96,4 +95,5 @@ function setMarkers(map) {
       zIndex: beach[3]
     });
   }
+
 }

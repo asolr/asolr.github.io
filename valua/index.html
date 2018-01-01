@@ -18,7 +18,17 @@
 </head>
 <body>
   <div id="map"></div>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+  <!-- SEARCH -->
+  <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+  <div id="map"></div>
+  <div id="infowindow-content">
+    <span id="place-name"  class="title"></span><br>
+    Place ID <span id="place-id"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <!-- SEARCH -->
+
   <div id="floating-panel">
     <button onclick="toggleHeatmap()">Toggle Heatmap</button>
     <button onclick="changeGradient()">Change gradient</button>
@@ -38,7 +48,7 @@
     initHeatMap();
     initSearch();
     initMarkers();
-    
+
   }
 
 </script>
