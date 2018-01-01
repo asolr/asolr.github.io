@@ -15,12 +15,11 @@ function startup() {
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">VALUA.org</h1>'+
       '<div id="bodyContent">'+
-      '<p><b>VALUA.</b>, is a new project to evaluate and estimate the '+
-      'value or price of any product. VALUA creates several live '+
+      '<p>VALUA, is a new project to evaluate and estimate the '+
+      'value or price of almost anything. VALUA creates several live '+
       'Mathematical Models for the user. The user can pick or '+
-      'submit a photograph. The project prototype is confidential'+
-      'however, the source code will be in the public domain. VALUA! </p>'+
-      '<p>VALUA: <a href="http://valua.org">'+
+      'submit an address.</p>'+
+      '<p><b>VALUA</b>: <a href="http://valua.org">'+
       'http://valua.org</a> '+
       '(January, 2018).</p>'+
       '</div>'+
