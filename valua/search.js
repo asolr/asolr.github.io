@@ -38,7 +38,7 @@ function initSearch() {
       map.setCenter(place.geometry.location);
       map.setZoom(17);
     }
-    
+
     // Set the position of the marker using the place ID and location.
     marker.setPlace({
       placeId: place.place_id,
@@ -46,10 +46,13 @@ function initSearch() {
     });
     marker.setVisible(true);
 
+    var contentStats = 'Our Stats: valua statistics 100%';
+
     infowindowContent.children['place-name'].textContent = place.name;
     infowindowContent.children['place-id'].textContent = place.place_id;
     infowindowContent.children['place-address'].textContent =
     place.formatted_address;
+    infowindowContent.children['place-stats'].textContent = contentStats;
     infowindow.open(map, marker);
   });
 }

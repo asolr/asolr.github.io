@@ -11,24 +11,17 @@ var uluru = {lat: -25.363, lng: 131.044};
 var contentString = '<div id="content">'+
 '<div id="siteNotice">'+
 '</div>'+
-'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+'<h1 id="firstHeading" class="firstHeading">VALUA.org</h1>'+
 '<div id="bodyContent">'+
-'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-'sandstone rock formation in the southern part of the '+
-'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-'south west of the nearest large town, Alice Springs; 450&#160;km '+
-'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-'Aboriginal people of the area. It has many springs, waterholes, '+
-'rock caves and ancient paintings. Uluru is listed as a World '+
-'Heritage Site.</p>'+
-'<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-'(last visited June 22, 2009).</p>'+
+'<p>VALUA, is a new project to evaluate and estimate the '+
+'value or price of almost anything. VALUA creates several live '+
+'Mathematical Models for the user. The user can pick or '+
+'submit an address.</p>'+
+'<p><b>VALUA</b>: <a href="http://valua.org">'+
+'http://valua.org</a> '+
+'(January, 2018).</p>'+
 '</div>'+
 '</div>';
-
 
 // Data for the markers consisting of a name, a LatLng and a zIndex for the
 // order in which these markers should display on top of each other.
