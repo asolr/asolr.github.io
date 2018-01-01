@@ -36,7 +36,7 @@
     <button onclick="changeOpacity()">Change opacity</button>
   </div>
   <script>
-  var map, heatmap; // should't be a global?
+  var map, heatmap, infoWindow; // should't be a global?
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -48,6 +48,7 @@
     initHeatMap();
     initSearch();
     initMarkers();
+    startup();
 
   }
 
