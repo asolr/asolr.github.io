@@ -14,7 +14,6 @@
   var ctx = canvas.getContext('2d');
 
   // chrome requires special configuration see http://www.html5rocks.com/en/tutorials/getusermedia/intro/
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
   function VideoCamera(video) {
     video.onloadedmetadata = function(e) {
