@@ -1,3 +1,4 @@
+
 <html>
 <head>
 </head>
@@ -30,10 +31,10 @@
     }
 
   function main() {
-    if (navigator.getUserMedia) {
+    if (navigator.mediaDevices.getUserMedia) {
       // navigator.getUserMedia(constraints, successCallback, errorCallback);
       var constraints = {audio: false, video: true };
-      navigator.getUserMedia(constraints,
+      navigator.mediaDevices.getUserMedia(constraints,
         function(stream) {
           var video = document.querySelector('video');
           video.src = window.URL.createObjectURL(stream);
