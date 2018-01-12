@@ -7,6 +7,7 @@
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD3AiNwlR6x-rHjYGbp277Whqf3t6LKvQ&libraries=visualization,places&callback=initMap">
   </script>
+  <script type="text/javascript" src="canvas.js"></script>
   <script type="text/javascript" src="markers.js"></script>
   <script type="text/javascript" src="search.js"></script>
   <script type="text/javascript" src="controls.js"></script>
@@ -50,8 +51,19 @@
     initSearch();
     initMarkers();
     startup();
+    demo();
 
   }
+
+  function demo (){
+  var draw = new Canvas(document.getElementById("map"));
+  var points = [[100,50],[10,50],[10,200]]
+  for (var i = 0; i < 10; i++) {
+    points.push([Math.random()*700,Math.random()*700]);
+  }
+  //draw.scale(points);
+  draw.circle(points, Math.random()*400);
+}
 
 </script>
 </body>

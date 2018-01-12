@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VALUA.</title>
+  <meta charset="utf-8">
+  <script type="text/javascript" charset="utf-8" src="sale.js"></script>
+  <style>
+  /* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+  #map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  #floating-panel {
+    background-color: #fff;
+    border: 1px solid #999;
+    left: 25%;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+  }
+  </style>
+</head>
+<body>
+  <body>
+    <div>
+      <h1>sale</h1>
+      <form>
+        Total Commission %<input type="numbers" id="caprate" placeholder="caprate" />
+        <br />
+        Agent % of Commission<input type="numbers" id="profit" placeholder="profit" />
+        <br />
+        Cost<input type="numbers" id="cost" placeholder="cost" />
+        <br />
+        Customer Money<input type="numbers" id="bathrooms" placeholder="bathrooms" />
+        <br />
+
+        <select id="choice">
+          <option value="1">SALES EVALUATION</option>
+          <option value="2">CUSTOMER/OWNER</option>
+          <option value="3">PROFIT</option>
+        </select>
+        <br/>
+        Sales/Market Value: <input type="checkbox" id="market">
+        Income Value: <input type="checkbox" id="income">
+        Constuction Value: <input type="checkbox" id="construction">
+          <br/>
+          <input id="est" type="button" value="Estimate" onclick="sale()" />
+          <input id="reset" type="reset" value="Reset" />
+        </form>
+        <h1 id="result"> = </h1>
+      </div>
+    </body>
+    </html>
