@@ -45,29 +45,20 @@
     <div>
       <h1>sale</h1>
       <form>
-        Total Commission %<input type="numbers" id="caprate" placeholder="caprate" />
+        <!-- calculations for brokers and real estate agents -->
+        Sales Price<input type="numbers" id="price" placeholder="price" />
         <br />
-        Agent % of Commission<input type="numbers" id="profit" placeholder="profit" />
+        Commission %<input type="numbers" id="commission" placeholder="commission" />
         <br />
-        Cost<input type="numbers" id="cost" placeholder="cost" />
+        Broker %<input type="numbers" id="broker" placeholder="broker" />
         <br />
-        Customer Money<input type="numbers" id="bathrooms" placeholder="bathrooms" />
+        Agent %<input type="numbers" id="agent" placeholder="agent" />
         <br />
-
-        <select id="choice">
-          <option value="1">SALES EVALUATION</option>
-          <option value="2">CUSTOMER/OWNER</option>
-          <option value="3">PROFIT</option>
-        </select>
-        <br/>
-        Sales/Market Value: <input type="checkbox" id="market">
-        Income Value: <input type="checkbox" id="income">
-        Constuction Value: <input type="checkbox" id="construction">
-          <br/>
-          <input id="est" type="button" value="Estimate" onclick="sale()" />
-          <input id="reset" type="reset" value="Reset" />
+          <input id="est" type="button" value="Estimate" onclick="commissions()" />
         </form>
-        <h1 id="result"> = </h1>
+        <h1 id="broker_com">Broker = </h1><br />
+        <h1 id="agent_com">Agent = </h1><br />
+        <h1 id="seller_com">Seller = </h1><br />
       </div>
     </body>
     </html>

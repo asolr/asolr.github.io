@@ -1,53 +1,21 @@
-function calculator() {
-  var sqft = Number(document.getElementById("sqft").value);
-  var sqftlot = Number(document.getElementById("lotsqft").value);
-  var bedrooms = Number(document.getElementById("bedrooms").value);
-  var bathrooms = Number(document.getElementById("bathrooms").value);
-  var p = Number(30);
-  var result;
-  var calc = document.getElementById("choice").value
+function commissions() {
 
-  // source https://www.census.gov/construction/chars/interactive/
-  var AVG_BATHROOMS = 2.56;
-  var AVG_BEDROOMS = 3.5;
-  var AVG_SQFT = 2300;
-  var AVG_PRICE = 255000;
+  // get all the needed variables
+  var commission = Number(document.getElementById("commission").value)/100;
+  var price = Number(document.getElementById("price").value);
+  var broker = Number(document.getElementById("broker").value)/100;
+  var agent = Number(document.getElementById("agent").value)/100;
 
-  // source https://www.census.gov/construction/chars/pdf/soldmedavgprice.pdf
-  // source https://www.trulia.com/home_prices/
-  var AVG_METRO = 450000;
-  var AVG_CITY = 347000;
-  var AVG_TOWN = 268000;
+  // results
+  var broker_com;
+  var agent_com;
+  var seller_com;
 
-  // TYPICAL MARKUP VALUE (DEPENDS ON CITY)
-  var ACT_GLOBAL = 1.27;
-  var ACT_METRO = 1.443
-  var ACT_CITY = 1.242
-  var ACT_TOWN = 1.136
-
-  switch (calc) {
-    case "1":
-    valua = AVG_METRO * (AVG_SQFT/sqft) * (bedrooms/AVG_BEDROOMS) * (bathrooms/AVG_BATHROOMS);
-    break;
-    case "2":
-    valua = AVG_CITY * (AVG_SQFT/sqft) * (bedrooms/AVG_BEDROOMS) * (bathrooms/AVG_BATHROOMS);
-    break;
-    case "3":
-    valua = AVG_TOWN * (AVG_SQFT/sqft) * (bedrooms/AVG_BEDROOMS) * (bathrooms/AVG_BATHROOMS);
-    break;
-  }
-  document.getElementById("result").innerHTML = " = " + valua.toFixed(2);
+  // error if(agent + broker != 1)
+  broker_com = price * commission * broker;
+  agent_com = price * commission * agent;
+  seller_com = price - (price * commission)
+  document.getElementById("broker_com").innerHTML = "Broker = " + broker_com.toFixed(2);
+  document.getElementById("agent_com").innerHTML = "Agent = " + agent_com.toFixed(2);
+  document.getElementById("seller_com").innerHTML = "Seller = " + seller_com.toFixed(2);
 }
-
-function setup() {
-  document.getElementById("sqft").value = "2000";
-  document.getElementById("bedrooms").value = "3";
-  document.getElementById("bathrooms").value = "2";
-}
-
-function myFunction() {
-  var x = document.getElementById("myCheck");
-  x.checked = true;
-}
-
-//window.onload = setup();
