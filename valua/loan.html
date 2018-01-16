@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VALUA.</title>
+  <meta charset="utf-8">
+  <script type="text/javascript" charset="utf-8" src="loan.js"></script>
+  <style>
+  /* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+  #map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  #floating-panel {
+    background-color: #fff;
+    border: 1px solid #999;
+    left: 25%;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+  }
+  </style>
+</head>
+<body>
+  <body>
+    <div>
+      <h1>sale</h1>
+      <form>
+        <!-- calculations for brokers and real estate agents -->
+        Front End / Back End Ratios: If a homeowner has a mortgage, the
+        front-end DTI ratio is usually
+        calculated as housing expenses (such as mortgage payments, mortgage
+        insurance, etc.) divided by gross income. In contrast, a back-end DTI
+        calculates the percentage of gross income going towards other types of
+        debt like credit card or car loans.
+        Front End Ratio = PITI (monthly payment)/ gross monthly income
+        Front End Ratio = Monthly Expenses / Monthly Income (is this also the LTV ratio?)
+        Back End Ratio = (PITI + Monthly Debut) / Gross Monthly Income
+        Back End Ratio = Total Monthly Debt Expense / Gross Monthly Income
+        Debt to Income Ratio (DTI)
+        Principal, Interest, Taxes, Insurance - PITI
+        "points" to reduce overall interest
+        Interest Rates Consider a 3% rate on a $100,000 loan. In decimals, 3% is .03, and when divided by 12 it is .0025. Multiply .0025 times $100,000 and you get $250 as the monthly interest payment.
+        Loan<input type="numbers" id="price" placeholder="price" />
+        <br />
+        Value<input type="numbers" id="commission" placeholder="commission" />
+        <br />
+        Loan to Value Ratio %<input type="numbers" id="broker" placeholder="broker" />
+        <br />
+        Agent %<input type="numbers" id="agent" placeholder="agent" />
+        <br />
+          <input id="est" type="button" value="Estimate" onclick="commissions()" />
+        </form>
+        <h1 id="broker_com">Broker = </h1><br />
+        <h1 id="agent_com">Agent = </h1><br />
+        <h1 id="seller_com">Seller = </h1><br />
+      </div>
+    </body>
+    </html>
